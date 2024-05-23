@@ -1,0 +1,38 @@
+<div class="nav">
+  <app-user [profile]="(userProfile$ | async) || {}"></app-user>
+  <hr>
+  <div class="nav-bar">
+    <ul class="nav-links">
+      <li routerLinkActive="active" routerLink="/events">
+        События
+      </li>
+      <mat-divider></mat-divider>
+      <li routerLinkActive="active" routerLink="/profiles">
+        Пользователи
+      </li>
+      <mat-divider></mat-divider>
+      <li routerLinkActive="active" routerLink="/artists">
+        Исполнители
+      </li><mat-divider></mat-divider>
+      <li routerLinkActive="active" routerLink="/chat">
+        Сообщения
+      </li>
+      <mat-divider></mat-divider>
+      <li routerLinkActive="active" routerLink="/lessons">
+        Уроки
+      </li>
+      <mat-divider></mat-divider>
+      <li routerLinkActive="active" routerLink="/market">
+        Барахолка
+      </li>
+
+    </ul>
+
+    <ul class="exit">
+      <mat-divider></mat-divider>
+      <li>
+        <a (click)="exit()">Выйти</a>
+      </li>
+    </ul>
+  </div>
+</div>

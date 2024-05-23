@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  max-width: 1240px;
+  margin: auto;
+  gap: 10px;
+  .content {
+    padding: 10px;
+    width: 100%;
+  }
+}
