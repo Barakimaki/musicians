@@ -12,4 +12,10 @@ export class ProfileService {
       withCredentials: true,
     });
   }
+
+  getProfile(id: number) {
+    return this.http.get(`/api/profile/${id}`, {
+      withCredentials: true,
+    });
+  }
 }

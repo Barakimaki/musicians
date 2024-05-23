@@ -24,4 +24,19 @@ export class ProfileEffects {
       })
     );
   });
+
+  getProfile$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProfileActions.getProfile),
+      exhaustMap((action) => {
+        return this.profileService.getProfile(action.id).pipe(
+          map((profile: Profile) => {
+            return ProfileActions.getProfileComplete({
+              profile,
+            });
+          })
+        );
+      })
+    );
+  });
 }

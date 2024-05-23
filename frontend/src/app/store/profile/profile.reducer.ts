@@ -17,5 +17,11 @@ export const profileReducer = createReducer(
       ...state,
       userProfile,
     };
+  }),
+  on(ProfileActions.getProfileComplete, (state, { profile }) => {
+    return {
+      ...state,
+      profile,
+    };
   })
 );

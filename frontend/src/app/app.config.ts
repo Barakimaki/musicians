@@ -9,6 +9,8 @@ import { AuthEffects } from './store/auth/auth.effects';
 import { appReducer } from './store/store';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { ProfileEffects } from './store/profile/profile.effects';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,12 +22,12 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'bsu-musicians',
-        appId: '1:882767409955:web:d2cb073e503fa66d191296',
-        storageBucket: 'bsu-musicians.appspot.com',
-        apiKey: 'AIzaSyBoqCX5on9UhzQ8UgXfpOH2XDlScUSDwVg',
-        authDomain: 'bsu-musicians.firebaseapp.com',
-        messagingSenderId: '882767409955',
-        measurementId: 'G-QV2NY4B832',
+        appId: process.env['FIREBASE_APP_ID'],
+        storageBucket: process.env['FIREBASE_STORAGE_BUCKET'],
+        apiKey: process.env['FIREBASE_API_KEY'],
+        authDomain: process.env['FIREBASE_AUTH_DOMAIN'],
+        messagingSenderId: process.env['FIREBASE_MESSAGING_SENDER_ID'],
+        measurementId: process.env['FIREBASE_MEASUREMENT_ID'],
       })
     ),
     provideStorage(() => getStorage()),

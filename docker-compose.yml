@@ -37,6 +37,13 @@ services:
       context: ./frontend
       target: development
     command: npm run start
+    environment:
+      FIREBASE_APP_ID: ${FIREBASE_APP_ID}
+      FIREBASE_API_KEY: ${FIREBASE_API_KEY}
+      FIREBASE_STORAGE_BUCKET: ${FIREBASE_STORAGE_BUCKET}
+      FIREBASE_AUTH_DOMAIN: ${FIREBASE_AUTH_DOMAIN}
+      FIREBASE_MESSAGING_SENDER_ID: ${FIREBASE_MESSAGING_SENDER_ID}
+      FIREBASE_MEASUREMENT_ID: ${FIREBASE_MEASUREMENT_ID}
     volumes:
       - ./frontend:/adamonis/frontend/src/app
       - /adamonis/frontend/src/app/node_modules
