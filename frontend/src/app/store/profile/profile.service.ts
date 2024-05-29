@@ -8,7 +8,7 @@ export class ProfileService {
   http = inject(HttpClient);
 
   getUserProfile() {
-    return this.http.get('/api/profile', {
+    return this.http.get('/api/profile/user', {
       withCredentials: true,
     });
   }
@@ -17,5 +17,26 @@ export class ProfileService {
     return this.http.get(`/api/profile/${id}`, {
       withCredentials: true,
     });
+  }
+
+  updateProfile(
+    id: number,
+    name: string,
+    familyName: string,
+    birthDate: string,
+    avatarUrl: string
+  ) {
+    return this.http.post(
+      `/api/profile/user/${id}`,
+      {
+        name,
+        familyName,
+        birthDate,
+        avatarUrl,
+      },
+      {
+        withCredentials: true,
+      }
+    );
   }
 }

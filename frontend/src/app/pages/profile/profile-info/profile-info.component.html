@@ -1,0 +1,12 @@
+<div class="profile-info">
+  <div class="avatar">
+    <img class="profile-image" [src]="profile.avatarUrl
+    || 'https://firebasestorage.googleapis.com/v0/b/bsu-musicians.appspot.com/o/avatar.jpg?alt=media&token=5e5f0e15-8893-491c-8573-ea4ebd6e5abe'
+    " alt="">
+  </div>
+  <div class="info">
+    <h2>{{profile.user?.username}}</h2>
+    <h3>{{profile.name}} {{profile.familyName}}</h3>
+    <h4>{{profile.birthDate | date: 'dd/MM/yyyy'}}</h4>
+  </div>
+</div>

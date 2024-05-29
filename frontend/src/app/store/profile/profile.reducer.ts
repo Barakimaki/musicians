@@ -4,10 +4,12 @@ import { Profile } from './model/profile.interface';
 
 export interface ProfileState {
   userProfile: Profile;
+  profile: Profile;
 }
 
 const initialState: ProfileState = {
   userProfile: {},
+  profile: {},
 };
 
 export const profileReducer = createReducer(

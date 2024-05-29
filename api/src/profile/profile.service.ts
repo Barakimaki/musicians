@@ -5,6 +5,7 @@ import { ProfileEntity } from './model/profile.entity';
 import { ProfileDto } from './dto/profile.dto';
 import { Profile } from './model/profile.interface';
 import { UserEntity } from 'src/users/model/user.entity';
+import { log } from 'console';
 
 @Injectable()
 export class ProfileService {
@@ -67,14 +68,29 @@ export class ProfileService {
   async update(id: number, dto: ProfileDto): Promise<Profile> {
     const profile = await this.profileRepository.findOne({
       where: { id },
+      relations: {
+        user: true,
+      },
+      select: {
+        id: true,
+        name: true,
+        familyName: true,
+        birthDate: true,
+        avatarUrl: true,
+        user: {
+          username: true,
+          id: true,
+        },
+      },
     });
 
     const { name, familyName, birthDate, avatarUrl }: ProfileDto = dto;
 
     profile.name = name;
     profile.familyName = familyName;
-    profile.birthDate = birthDate;
+    profile.birthDate = new Date(birthDate);
     profile.avatarUrl = avatarUrl;
+    console.log(profile);
 
     return await this.profileRepository.save(profile);
   }

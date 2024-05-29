@@ -39,4 +39,22 @@ export class ProfileEffects {
       })
     );
   });
+
+  updateProfile$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProfileActions.updateProfile),
+      exhaustMap((action) => {
+        const { id, name, familyName, birthDate, avatarUrl } = action;
+        return this.profileService
+          .updateProfile(id, name, familyName, birthDate, avatarUrl)
+          .pipe(
+            map((profile: Profile) => {
+              return ProfileActions.getProfileComplete({
+                profile,
+              });
+            })
+          );
+      })
+    );
+  });
 }

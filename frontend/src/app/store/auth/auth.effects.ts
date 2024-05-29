@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import * as AuthActions from './auth.actions';
 import { catchError, exhaustMap, map } from 'rxjs';
@@ -10,6 +11,7 @@ export class AuthEffects {
   private actions$ = inject(Actions);
   private router = inject(Router);
   private authService = inject(AuthService);
+  private location = inject(Location);
 
   authSignUp$ = createEffect(() => {
     return this.actions$.pipe(
@@ -51,7 +53,7 @@ export class AuthEffects {
       exhaustMap((action) => {
         return this.authService.refresh().pipe(
           map((authResponse: AuthResponseData) => {
-            this.router.navigate(['/']);
+            this.location.back();
             return AuthActions.authComplete({
               accessToken: authResponse.accessToken,
             });

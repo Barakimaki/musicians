@@ -1,1 +1,11 @@
-<p>profile in progress...</p>
+<div>
+  <app-profile-info [profile]="(profile$ | async) || {}"></app-profile-info>
+  @if((userId$ | async) === (profile$ | async)?.user?.id && !isEdit){
+  <button mat-button color="primary" type="submit" (click)="editProfileMode()">
+    Редактировать
+  </button>
+  }
+  @if(isEdit){
+  <app-profile-form [profile]="(profile$ | async) || {}" (onClose)="closeEditProfileMode()"></app-profile-form>
+  }
+</div>

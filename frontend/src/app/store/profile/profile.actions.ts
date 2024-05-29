@@ -8,10 +8,21 @@ export const getUserProfileComplete = createAction(
 );
 
 export const getProfile = createAction(
-  '[Profile] getUserProfile',
+  '[Profile] getProfile',
   props<{ id: number }>()
 );
 export const getProfileComplete = createAction(
-  '[Profile] getUserProfileComplete',
+  '[Profile] getProfileComplete',
   props<{ profile: Profile }>()
+);
+
+export const updateProfile = createAction(
+  '[Profile] updateProfile',
+  props<{
+    id: number;
+    name: string;
+    familyName: string;
+    birthDate: string;
+    avatarUrl: string;
+  }>()
 );

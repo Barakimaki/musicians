@@ -5,7 +5,7 @@ export interface Profile {
   birthDate?: Date;
   avatarUrl?: string;
   user?: {
-    username?: string;
-    id?: number;
+    username: string;
+    id: number;
   };
 }

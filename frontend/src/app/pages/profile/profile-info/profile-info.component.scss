@@ -1,0 +1,15 @@
+.profile-info {
+  display: flex;
+  gap: 10px;
+
+  .avatar {
+    max-width: 240px;
+
+    .profile-image {
+      width: 100%;
+    }
+  }
+
+  .info {
+  }
+}

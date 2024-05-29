@@ -1,0 +1,17 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-group">
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Фамилия</mat-label>
+    <input matInput type="text" id="familyName" formControlName="familyName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input matInput [matDatepicker]="picker" type="date" id="birthDate" formControlName="birthDate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button mat-button type="submit">Принять изменения</button>
+</form>
