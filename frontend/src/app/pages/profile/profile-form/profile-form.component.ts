@@ -43,6 +43,16 @@ export class ProfileFormComponent implements OnInit {
   @Output() onClose = new EventEmitter();
   profileForm!: FormGroup;
 
+  file: File | null = null;
+
+  onChange(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.file = file;
+    }
+  }
+
   store = inject(Store<AppState>);
 
   ngOnInit(): void {
@@ -69,13 +79,14 @@ export class ProfileFormComponent implements OnInit {
     const name = this.profileForm.value.name;
     const familyName = this.profileForm.value.familyName;
     const birthDate = this.profileForm.value.birthDate;
+
     this.store.dispatch(
       updateProfile({
         id: this.profile.id as number,
         name,
         familyName,
         birthDate,
-        avatarUrl: this.profile.avatarUrl as string,
+        avatar: this.file as File,
       })
     );
     this.onClose.emit();

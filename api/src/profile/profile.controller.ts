@@ -22,6 +22,12 @@ export class ProfileController {
   }
 
   @UseGuards(AccessTokenGuard)
+  @Get('/profiles')
+  async getAllProfiles() {
+    return await this.profileService.getAllProfiles();
+  }
+
+  @UseGuards(AccessTokenGuard)
   @Get('/:id')
   async getProfile(@Param('id') id: number) {
     return await this.profileService.getProfile(id);

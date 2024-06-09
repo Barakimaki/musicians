@@ -1,6 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ArtistEntity } from 'src/artists/model/artist.entity';
 import { ProfileEntity } from 'src/profile/model/profile.entity';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class UserEntity {
@@ -40,4 +47,7 @@ export class UserEntity {
 
   @OneToOne(() => ProfileEntity, (profile) => profile.user)
   profile: ProfileEntity;
+
+  @OneToMany(() => ArtistEntity, (artist) => artist.user)
+  artists: ArtistEntity[];
 }

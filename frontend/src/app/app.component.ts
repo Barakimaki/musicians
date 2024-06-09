@@ -20,6 +20,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.store.dispatch(refresh());
+
     this.isLoggedIn$ = this.store.select(
       (state: AppState) => state.auth.isLoggedIn
     );

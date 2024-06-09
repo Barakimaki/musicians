@@ -5,11 +5,13 @@ import { Profile } from './model/profile.interface';
 export interface ProfileState {
   userProfile: Profile;
   profile: Profile;
+  profiles: Profile[];
 }
 
 const initialState: ProfileState = {
   userProfile: {},
   profile: {},
+  profiles: [],
 };
 
 export const profileReducer = createReducer(
@@ -24,6 +26,12 @@ export const profileReducer = createReducer(
     return {
       ...state,
       profile,
+    };
+  }),
+  on(ProfileActions.getProfilesComplete, (state, { profiles }) => {
+    return {
+      ...state,
+      profiles,
     };
   })
 );

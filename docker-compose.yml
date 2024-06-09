@@ -9,7 +9,7 @@ services:
       # Only build development stage from Dockerfile
       target: development
     # Mount our host dir to the docker container
-    # Mount api directory (./api) to (:) docker container (/thomas/src/app)
+    # Mount api directory (./api) to (:) docker container (/adamonis/src/app)
     # Reflect File changes from host to container
     volumes:
       - ./api:/adamonis/src/app

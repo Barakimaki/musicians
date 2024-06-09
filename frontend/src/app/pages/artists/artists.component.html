@@ -1,1 +1,16 @@
-<p>artists in progress...</p>
+<div class="artists">
+  <button mat-button color="primary" type="submit" (click)="editProfileMode()">
+    Создать профиль исполнителя
+  </button>
+  <div>
+    @if(isEdit){
+    <app-artist-form (onClose)="closeEditArtistMode()"></app-artist-form>
+    }
+  </div>
+  <div class=" artist-list">
+    @for(artist of (artists$ | async); track artist.id){
+    <app-artist-short [artist]="artist"></app-artist-short>
+    }
+  </div>
+
+</div>

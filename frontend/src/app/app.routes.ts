@@ -8,6 +8,7 @@ import { LessonsComponent } from './pages/lessons/lessons.component';
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { ArtistsComponent } from './pages/artists/artists.component';
 import { EventsComponent } from './pages/events/events.component';
+import { ArtistComponent } from './pages/artist/artist.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -17,6 +18,11 @@ export const routes: Routes = [
   { path: 'market', component: MarketComponent, canActivate: [authGuard] },
   { path: 'lessons', component: LessonsComponent, canActivate: [authGuard] },
   { path: 'artists', component: ArtistsComponent, canActivate: [authGuard] },
+  {
+    path: 'artist/:artistId',
+    component: ArtistComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'profiles',
     component: ProfilesComponent,

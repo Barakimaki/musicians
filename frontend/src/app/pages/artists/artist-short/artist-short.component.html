@@ -1,0 +1,9 @@
+<a class="artist" routerLink="/artist/{{artist.id}}">
+
+  <img class="artist-image" [src]="artist.logoUrl
+    || 'https://firebasestorage.googleapis.com/v0/b/bsu-musicians.appspot.com/o/avatar.jpg?alt=media&token=5e5f0e15-8893-491c-8573-ea4ebd6e5abe'
+    " alt="">
+  <div class="artist-name">
+    {{artist.name}}
+  </div>
+</a>

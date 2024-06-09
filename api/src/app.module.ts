@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProfileModule } from './profile/profile.module';
+import { ArtistsModule } from './artists/artists.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProfileModule } from './profile/profile.module';
       synchronize: true,
     }),
     ProfileModule,
+    ArtistsModule,
   ],
   controllers: [],
   providers: [],

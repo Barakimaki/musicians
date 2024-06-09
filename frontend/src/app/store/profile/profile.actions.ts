@@ -16,6 +16,12 @@ export const getProfileComplete = createAction(
   props<{ profile: Profile }>()
 );
 
+export const getProfiles = createAction('[Profile] getProfiles');
+export const getProfilesComplete = createAction(
+  '[Profile] getProfilesComplete',
+  props<{ profiles: Profile[] }>()
+);
+
 export const updateProfile = createAction(
   '[Profile] updateProfile',
   props<{
@@ -23,6 +29,6 @@ export const updateProfile = createAction(
     name: string;
     familyName: string;
     birthDate: string;
-    avatarUrl: string;
+    avatar: File;
   }>()
 );

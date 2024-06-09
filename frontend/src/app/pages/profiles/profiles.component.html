@@ -1,1 +1,5 @@
-<p>profiles in progress...</p>
+<div class="profiles">
+  @for(profile of (profiles$ | async); track profile.id){
+  <app-user [profile]="(profile)"></app-user>
+  }
+</div>

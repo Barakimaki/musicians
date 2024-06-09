@@ -19,6 +19,12 @@ export class ProfileService {
     });
   }
 
+  getAllProfiles() {
+    return this.http.get(`/api/profile/profiles`, {
+      withCredentials: true,
+    });
+  }
+
   updateProfile(
     id: number,
     name: string,
