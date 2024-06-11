@@ -55,7 +55,7 @@ export class ArtistsService {
       },
     });
     artist.user = user;
-    await this.artistRepository.save(artist);
+    return await this.artistRepository.save(artist);
   }
 
   async delete(id: number) {

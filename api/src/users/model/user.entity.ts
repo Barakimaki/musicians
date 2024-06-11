@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ArtistEntity } from 'src/artists/model/artist.entity';
+import { MarketEntity } from 'src/market/entities/market.entity';
 import { ProfileEntity } from 'src/profile/model/profile.entity';
 import {
   Column,
@@ -50,4 +51,7 @@ export class UserEntity {
 
   @OneToMany(() => ArtistEntity, (artist) => artist.user)
   artists: ArtistEntity[];
+
+  @OneToMany(() => MarketEntity, (market) => market.user)
+  market: MarketEntity[];
 }

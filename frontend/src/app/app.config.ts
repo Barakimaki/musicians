@@ -12,6 +12,7 @@ import { ProfileEffects } from './store/profile/profile.effects';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ArtistEffects } from './store/artist/artist.effects';
+import { MarketEffects } from './store/market/market.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimationsAsync(),
     provideStore(appReducer),
-    provideEffects(AuthEffects, ProfileEffects, ArtistEffects),
+    provideEffects(AuthEffects, ProfileEffects, ArtistEffects, MarketEffects),
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'bsu-musicians',

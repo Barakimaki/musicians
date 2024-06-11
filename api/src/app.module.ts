@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProfileModule } from './profile/profile.module';
 import { ArtistsModule } from './artists/artists.module';
+import { MarketModule } from './market/market.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ArtistsModule } from './artists/artists.module';
     }),
     ProfileModule,
     ArtistsModule,
+    MarketModule,
   ],
   controllers: [],
   providers: [],

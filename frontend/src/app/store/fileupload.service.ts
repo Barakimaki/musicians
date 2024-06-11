@@ -5,6 +5,7 @@ import {
   ref,
   uploadBytesResumable,
 } from '@angular/fire/storage';
+import { uploadBytes } from 'firebase/storage';
 import { finalize } from 'rxjs';
 
 @Injectable({
@@ -15,8 +16,11 @@ export class FileUploadService {
   async uploadFile(file: File, category: string, filename: string) {
     if (file) {
       const storageRef = ref(this.storage, `${category}-${filename}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      return await getDownloadURL(uploadTask.snapshot.ref).then((url) => url);
+      const uploadTask = await uploadBytesResumable(storageRef, file);
+
+      let url = await getDownloadURL(uploadTask.ref);
+
+      return url;
     }
     return '';
   }

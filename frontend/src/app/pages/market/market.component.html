@@ -1,1 +1,15 @@
-<p>market in progress...</p>
+<div class="market">
+  <button mat-button color="primary" type="submit" (click)="editItemMode()">
+    Создать объявление
+  </button>
+  <div>
+    @if(isEdit){
+    <app-market-form (onClose)="closeEditItemMode()"></app-market-form>
+    }
+  </div>
+  <div class="market-list">
+    @for(item of (marketItems$ | async); track item.id){
+    <app-market-item [item]="item"></app-market-item>
+    }
+  </div>
+</div>

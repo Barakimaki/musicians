@@ -1,0 +1,22 @@
+.item {
+  .info {
+    display: flex;
+    gap: 20px;
+    .photo {
+      img {
+        width: 220px;
+
+        border-radius: 10px;
+      }
+    }
+    .description {
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    .price {
+    }
+  }
+}
