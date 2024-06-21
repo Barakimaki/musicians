@@ -1,20 +1,69 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-group">
-  <mat-form-field>
-    <mat-label>Имя</mat-label>
-    <input matInput type="text" id="name" formControlName="name">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Фамилия</mat-label>
-    <input matInput type="text" id="familyName" formControlName="familyName">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Дата рождения</mat-label>
-    <input matInput [matDatepicker]="picker" type="date" id="birthDate" formControlName="birthDate">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+<!--<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-group">-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Имя</mat-label>-->
+<!--    <input matInput type="text" id="name" formControlName="name">-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Фамилия</mat-label>-->
+<!--    <input matInput type="text" id="familyName" formControlName="familyName">-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Дата рождения</mat-label>-->
+<!--    <input matInput [matDatepicker]="picker" type="date" id="birthDate" formControlName="birthDate">-->
+<!--    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--    <mat-datepicker #picker></mat-datepicker>-->
+<!--  </mat-form-field>-->
 
-  <mat-label>Изображение профиля</mat-label>
-  <input type="file" id="avatar" (change)="onChange($event)">
-  <button mat-button type="submit">Принять изменения</button>
-</form>
+<!--  <mat-label>Изображение профиля</mat-label>-->
+<!--  <input type="file" id="avatar" (change)="onChange($event)">-->
+<!--  <button mat-button type="submit">Принять изменения</button>-->
+<!--</form>-->
+
+<div class="form-container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+
+    <!-- Имя -->
+    <mat-form-field appearance="outline">
+      <mat-label>Имя</mat-label>
+      <input matInput type="text" id="name" formControlName="name">
+      <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
+        Это поле обязательное
+      </mat-error>
+      <mat-error *ngIf="profileForm.get('name')?.hasError('minlength')">
+        Минимум 2 символа
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Фамилия -->
+    <mat-form-field appearance="outline">
+      <mat-label>Фамилия</mat-label>
+      <input matInput type="text" id="familyName" formControlName="familyName">
+      <mat-error *ngIf="profileForm.get('familyName')?.hasError('required')">
+        Это поле обязательное
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Дата рождения -->
+    <mat-form-field appearance="outline">
+      <mat-label>Дата рождения</mat-label>
+      <input matInput [matDatepicker]="picker" id="birthDate" formControlName="birthDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="profileForm.get('birthDate')?.hasError('matDatepickerParse')">
+        Неверный формат даты
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Аватар -->
+    <div class="avatar-upload">
+      <label for="avatar" class="avatar-label">Изображение профиля</label>
+      <input type="file" id="avatar" (change)="onChange($event)" accept="image/*">
+    </div>
+
+    <!-- Кнопка -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid" class="submit-btn">
+      Принять изменения
+    </button>
+
+  </form>
+</div>

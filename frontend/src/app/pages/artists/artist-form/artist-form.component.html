@@ -1,20 +1,49 @@
-<form [formGroup]="artistForm" (ngSubmit)="onSubmit()" class="form-group">
-  <mat-form-field>
+<!--<form [formGroup]="artistForm" (ngSubmit)="onSubmit()" class="form-group">-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Название</mat-label>-->
+<!--    <input matInput type="text" id="name" formControlName="name">-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Описание</mat-label>-->
+<!--    <textarea matInput type="text" id="description" formControlName="description"></textarea>-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Ссылка</mat-label>-->
+<!--    <input matInput type="text" id="name" formControlName="bandLink">-->
+<!--  </mat-form-field>-->
+
+
+<!--  <mat-label>Лого</mat-label>-->
+<!--  <input type="file" id="logo" (change)="onChange($event)">-->
+<!--  <button mat-button type="submit">Создать</button>-->
+<!--  <button mat-button type="button" (click)="closeForm()">Закрыть</button>-->
+<!--</form>-->
+
+<form [formGroup]="artistForm" (ngSubmit)="onSubmit()" class="artist-form">
+  <mat-form-field appearance="outline">
     <mat-label>Название</mat-label>
     <input matInput type="text" id="name" formControlName="name">
   </mat-form-field>
-  <mat-form-field>
+
+  <mat-form-field appearance="outline">
     <mat-label>Описание</mat-label>
     <textarea matInput type="text" id="description" formControlName="description"></textarea>
   </mat-form-field>
-  <mat-form-field>
+
+  <mat-form-field appearance="outline">
     <mat-label>Ссылка</mat-label>
-    <input matInput type="text" id="name" formControlName="bandLink">
+    <input matInput type="text" id="bandLink" formControlName="bandLink">
   </mat-form-field>
 
+  <div class="avatar-upload">
+    <label for="logo" class="avatar-label">Лого</label>
+    <input type="file" id="logo" (change)="onChange($event)" accept="image/*">
+  </div>
 
-  <mat-label>Лого</mat-label>
-  <input type="file" id="logo" (change)="onChange($event)">
-  <button mat-button type="submit">Создать</button>
-  <button mat-button type="button" (click)="closeForm()">Закрыть</button>
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="artistForm.invalid">
+      Создать
+    </button>
+    <button mat-button type="button" (click)="closeForm()">Закрыть</button>
+  </div>
 </form>

@@ -1,16 +1,34 @@
-<div>
+<!--<div>-->
+<!--  <div class="artist-info">-->
+<!--    <div class="artist-logo">-->
+<!--      <img src="{{artist.logoUrl}}" alt="{{artist.name}}">-->
+<!--    </div>-->
+<!--    <div class="artist-short-info">-->
+<!--      <h2>{{artist.name}}</h2>-->
+<!--      <h3>-->
+<!--        <a href="{{artist.bandLink}}">Сайт</a>-->
+<!--      </h3>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="description">-->
+<!--    <p>{{artist.description}}</p>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="artist-profile">
   <div class="artist-info">
     <div class="artist-logo">
-      <img src="{{artist.logoUrl}}" alt="{{artist.name}}">
+      <img [src]="artist.logoUrl" [alt]="artist.name">
     </div>
     <div class="artist-short-info">
-      <h2>{{artist.name}}</h2>
+      <h2>{{ artist.name }}</h2>
       <h3>
-        <a href="{{artist.bandLink}}">Сайт</a>
+        <a [href]="artist.bandLink" target="_blank">Перейти на сайт</a>
       </h3>
     </div>
   </div>
+
   <div class="description">
-    <p>{{artist.description}}</p>
+    <p>{{ artist.description }}</p>
   </div>
 </div>

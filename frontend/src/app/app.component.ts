@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   store = inject(Store<AppState>);
   isLoggedIn$!: Observable<boolean>;
 

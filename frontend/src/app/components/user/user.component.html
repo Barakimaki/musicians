@@ -1,13 +1,24 @@
+<!--<a class="user" routerLink="/profile/{{profile.id}}">-->
+<!--  <img class="user-image" [src]="profile.avatarUrl-->
+<!--    || 'https://firebasestorage.googleapis.com/v0/b/bsu-musicians.appspot.com/o/avatar.jpg?alt=media&token=5e5f0e15-8893-491c-8573-ea4ebd6e5abe'-->
+<!--    " alt="">-->
+<!--  <div class="user-name">-->
+<!--    {{profile.user?.username}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <h5>{{profile.name}} {{profile.familyName}}</h5>-->
+<!--  </div>-->
+<!--</a>-->
+
 <a class="user" routerLink="/profile/{{profile.id}}">
+  <img class="user-image" [src]="profile.avatarUrl || 'https://firebasestorage.googleapis.com/v0/b/bsu-musicians.appspot.com/o/avatar.jpg?alt=media&token=5e5f0e15-8893-491c-8573-ea4ebd6e5abe '" alt="Аватар">
 
-  <img class="user-image" [src]="profile.avatarUrl
-    || 'https://firebasestorage.googleapis.com/v0/b/bsu-musicians.appspot.com/o/avatar.jpg?alt=media&token=5e5f0e15-8893-491c-8573-ea4ebd6e5abe'
-    " alt="">
-  <div class="user-name">
-    {{profile.user?.username}}
+  <div class="user-info">
+    <div class="user-name">
+      {{ profile.user?.username }}
+    </div>
+    <h5 class="user-fullname">
+      {{ profile.name }} {{ profile.familyName }}
+    </h5>
   </div>
-  <div>
-    <h5>{{profile.name}} {{profile.familyName}}</h5>
-  </div>
-
 </a>

@@ -1,31 +1,69 @@
+<!--<div class="auth">-->
+<!--  <mat-card>-->
+<!--    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">-->
+<!--      <mat-card-header>-->
+<!--        <mat-card-title>{{ isLoginMode ? "Вход" : "Регистрация" }}</mat-card-title>-->
+<!--      </mat-card-header>-->
+<!--      <mat-card-content>-->
+<!--        <div class="form-group">-->
+<!--          <label for="email">E-Mail</label>-->
+<!--          <input type="email" id="email" formControlName="email" />-->
+<!--        </div>-->
+<!--        @if(!isLoginMode){-->
+<!--        <div class="form-group">-->
+<!--          <label for="username">Имя пользователя</label>-->
+<!--          <input type="text" id="username" formControlName="username" />-->
+<!--        </div>-->
+<!--        }-->
+<!--        <div class="form-group">-->
+<!--          <label for="password">Password</label>-->
+<!--          <input type="password" id="password" formControlName="password" />-->
+<!--        </div>-->
+<!--      </mat-card-content>-->
+<!--      <mat-card-actions>-->
+<!--        <button mat-button color="primary" type="submit" [disabled]="authForm.invalid">-->
+<!--          {{isLoginMode ? 'Войти' : 'Зарегистрироваться'}}-->
+<!--        </button>-->
+<!--        <button mat-button type="button" (click)="onSwitchMode()">-->
+<!--          {{isLoginMode ? 'Регистрация' : 'Вход'}}-->
+<!--        </button>-->
+<!--      </mat-card-actions>-->
+<!--    </form>-->
+<!--  </mat-card>-->
+<!--</div>-->
+
 <div class="auth">
   <mat-card>
     <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">
       <mat-card-header>
         <mat-card-title>{{ isLoginMode ? "Вход" : "Регистрация" }}</mat-card-title>
       </mat-card-header>
+
       <mat-card-content>
         <div class="form-group">
           <label for="email">E-Mail</label>
           <input type="email" id="email" formControlName="email" />
         </div>
-        @if(!isLoginMode){
-        <div class="form-group">
-          <label for="username">Имя пользователя</label>
-          <input type="text" id="username" formControlName="username" />
-        </div>
+
+        @if (!isLoginMode) {
+          <div class="form-group">
+            <label for="username">Имя пользователя</label>
+            <input type="text" id="username" formControlName="username" />
+          </div>
         }
+
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Пароль</label>
           <input type="password" id="password" formControlName="password" />
         </div>
       </mat-card-content>
+
       <mat-card-actions>
         <button mat-button color="primary" type="submit" [disabled]="authForm.invalid">
-          {{isLoginMode ? 'Войти' : 'Зарегистрироваться'}}
+          {{ isLoginMode ? 'Войти' : 'Зарегистрироваться' }}
         </button>
         <button mat-button type="button" (click)="onSwitchMode()">
-          {{isLoginMode ? 'Регистрация' : 'Вход'}}
+          {{ isLoginMode ? 'Регистрация' : 'Вход' }}
         </button>
       </mat-card-actions>
     </form>

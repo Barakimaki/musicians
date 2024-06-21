@@ -7,11 +7,12 @@ import { getMarketItems } from '../../store/market/market.actions';
 import { CommonModule } from '@angular/common';
 import { MarketItemComponent } from './market-item/market-item.component';
 import { MarketFormComponent } from './market-form/market-form.component';
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-market',
   standalone: true,
-  imports: [CommonModule, MarketFormComponent, MarketItemComponent],
+  imports: [CommonModule, MarketFormComponent, MarketItemComponent, MatButton],
   templateUrl: './market.component.html',
   styleUrl: './market.component.scss',
 })

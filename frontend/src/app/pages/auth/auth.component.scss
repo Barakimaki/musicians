@@ -1,30 +1,138 @@
+//.auth {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  height: 100vh;
+//
+//  .auth-form {
+//    padding: 10px;
+//    width: 400px;
+//    // border-radius: 10px;
+//    // box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+//
+//    display: flex;
+//    flex-direction: column;
+//    gap: 10px;
+//    align-items: center;
+//
+//    .form-group {
+//      display: flex;
+//      flex-direction: column;
+//      gap: 6px;
+//      align-items: center;
+//    }
+//
+//    .button-group {
+//      display: flex;
+//      justify-content: space-between;
+//    }
+//  }
+//}
+
 .auth {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #12121c;
+  padding: 2rem;
 
-  .auth-form {
-    padding: 10px;
-    width: 400px;
-    // border-radius: 10px;
-    // box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  mat-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: #1e1e2f;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.5s ease-in-out;
 
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    .mat-mdc-card-header {
+      background-color: transparent;
+      text-align: center;
+    }
+
+    .mat-card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .mat-card-content {
+      padding-top: 1rem;
+    }
 
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      align-items: center;
+      margin-bottom: 1rem;
+
+      label {
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      input {
+        background-color: #2a2a3f;
+        border: none;
+        border-radius: 6px;
+        padding: 12px;
+        color: white;
+        font-size: 14px;
+        outline: none;
+
+        &:focus {
+          border: 1px solid #6c5ce7;
+          background-color: #2d2d44;
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
     }
 
-    .button-group {
-      display: flex;
-      justify-content: space-between;
+    .mat-card-actions {
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 0;
     }
+
+    button[type="submit"] {
+      background-color: #6c5ce7;
+      color: white;
+      font-weight: bold;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: darken(#6c5ce7, 10%);
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        background-color: rgba(108, 92, 231, 0.3);
+        cursor: not-allowed;
+      }
+    }
+
+    button[type="button"] {
+      color: #aaa;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

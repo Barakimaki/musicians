@@ -1,6 +1,121 @@
+//.market-form {
+//  display: flex;
+//  flex-direction: column;
+//  gap: 10px;
+//  max-width: 400px;
+//}
+
 .market-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
+  max-width: 600px;
+  width: 100%;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #1e1e2f; // Тёмный фон
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  color: white; // Белый цвет текста по умолчанию
+  animation: fadeIn 0.5s ease-in-out;
+
+  // === Material Form Fields ===
+  mat-form-field {
+    width: 100%;
+
+    // Цвет текста внутри поля
+    input,
+    textarea {
+      color: white !important;
+    }
+
+    // Плейсхолдер
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    // Цвет лейбла
+    .mat-mdc-form-field-label {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    // Обводка (outline)
+    .mat-mdc-form-field-outline {
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    &:focus-within .mat-mdc-form-field-outline,
+    &.mat-focused .mat-mdc-form-field-outline {
+      border-color: white !important;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  // Стиль textarea
+  textarea.mat-mdc-input-element {
+    min-height: 100px;
+    resize: vertical;
+    background-color: transparent;
+    caret-color: white;
+  }
+
+  // === Загрузка изображения ===
+  .avatar-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 1rem;
+
+    .avatar-label {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    input[type="file"] {
+      padding: 6px 12px;
+      background-color: #2a2a3f;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #33334d;
+      }
+    }
+  }
+
+  // === Кнопки ===
+  .form-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    button {
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    button[type="submit"] {
+      background-color: #6c5ce7; // фиолетовая кнопка
+      color: white;
+
+      &:hover {
+        background-color: darken(#6c5ce7, 10%);
+      }
+    }
+  }
+}
+
+// === Анимация появления ===
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

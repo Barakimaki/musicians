@@ -1,8 +1,18 @@
+<!--<div class="app">-->
+<!--  @if(isLoggedIn$ | async){-->
+<!--  <app-navbar></app-navbar>-->
+<!--  }-->
+<!--  <div class="content">-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="app">
-  @if(isLoggedIn$ | async){
-  <app-navbar></app-navbar>
+  @if (isLoggedIn$ | async) {
+    <app-navbar class="navbar"></app-navbar>
   }
-  <div class="content">
+
+  <div class="main-content">
     <router-outlet></router-outlet>
   </div>
 </div>

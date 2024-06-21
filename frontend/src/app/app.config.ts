@@ -38,6 +38,6 @@ export const appConfig: ApplicationConfig = {
         measurementId: 'G-G3VFFMQHZ7',
       })
     ),
-    provideStorage(() => getStorage()),
+    provideStorage(() => getStorage()), provideAnimationsAsync(),
   ],
 };

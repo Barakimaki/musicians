@@ -1,11 +1,34 @@
-<div>
-  <app-profile-info [profile]="(profile$ | async) || {}"></app-profile-info>
-  @if((userId$ | async) === (profile$ | async)?.user?.id && !isEdit){
-  <button mat-button color="primary" type="submit" (click)="editProfileMode()">
-    Редактировать
-  </button>
+<!--<div>-->
+<!--  <app-profile-info [profile]="(profile$ | async) || {}"></app-profile-info>-->
+<!--  @if((userId$ | async) === (profile$ | async)?.user?.id && !isEdit){-->
+<!--  <button mat-button color="primary" type="submit" (click)="editProfileMode()">-->
+<!--    Редактировать-->
+<!--  </button>-->
+<!--  }-->
+<!--  @if(isEdit){-->
+<!--  <app-profile-form [profile]="(profile$ | async) || {}" (onClose)="closeEditProfileMode()"></app-profile-form>-->
+<!--  }-->
+<!--</div>-->
+
+<div class="profile-page">
+  <app-profile-info
+    [profile]="(profile$ | async) || {}"
+    class="profile-card"
+  ></app-profile-info>
+
+  @if ((userId$ | async) === (profile$ | async)?.user?.id && !isEdit) {
+    <button mat-raised-button color="primary" (click)="editProfileMode()" class="edit-btn">
+      Редактировать
+    </button>
   }
-  @if(isEdit){
-  <app-profile-form [profile]="(profile$ | async) || {}" (onClose)="closeEditProfileMode()"></app-profile-form>
+
+  @if (isEdit) {
+    <div class="form-wrapper">
+      <app-profile-form
+        [profile]="(profile$ | async) || {}"
+        (onClose)="closeEditProfileMode()"
+      >
+      </app-profile-form>
+    </div>
   }
 </div>

@@ -8,6 +8,7 @@ import { ArtistFormComponent } from './artist-form/artist-form.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ArtistShortComponent } from './artist-short/artist-short.component';
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-artists',
@@ -17,6 +18,7 @@ import { ArtistShortComponent } from './artist-short/artist-short.component';
     CommonModule,
     ArtistFormComponent,
     ArtistShortComponent,
+    MatButton,
   ],
   templateUrl: './artists.component.html',
   styleUrl: './artists.component.scss',

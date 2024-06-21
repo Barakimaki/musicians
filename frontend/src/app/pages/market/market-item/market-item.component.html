@@ -1,21 +1,43 @@
+<!--<div class="item">-->
+<!--  <h2>{{item.name}}</h2>-->
+<!--  <div class="info">-->
+<!--    <div class="photo">-->
+<!--      <img [src]="item.photoUrl" alt="">-->
+<!--    </div>-->
+<!--    <p class="description">-->
+<!--      {{item.description}}-->
+<!--    </p>-->
+<!--  </div>-->
+<!--  <div class="actions">-->
+<!--    <div class="price">-->
+<!--      <h3>{{item.price}}$</h3>-->
+<!--    </div>-->
+<!--    @if((userId$ | async) === item.user?.id){-->
+<!--    <button mat-button color="secondary" type="submit" (click)="onDelete()">-->
+<!--      Удалить-->
+<!--    </button>-->
+<!--    }-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="item">
-  <h2>{{item.name}}</h2>
+  <h2>{{ item.name }}</h2>
   <div class="info">
     <div class="photo">
       <img [src]="item.photoUrl" alt="">
     </div>
     <p class="description">
-      {{item.description}}
+      {{ item.description }}
     </p>
   </div>
   <div class="actions">
     <div class="price">
-      <h3>{{item.price}}$</h3>
+      <h3>{{ item.price }}$</h3>
     </div>
-    @if((userId$ | async) === item.user?.id){
-    <button mat-button color="secondary" type="submit" (click)="onDelete()">
-      Удалить
-    </button>
+    @if((userId$ | async) === item.user?.id) {
+      <button mat-button color="warn" type="submit" (click)="onDelete()" class="delete-btn">
+        Удалить
+      </button>
     }
   </div>
 </div>

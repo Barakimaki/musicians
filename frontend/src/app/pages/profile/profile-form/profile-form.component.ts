@@ -19,7 +19,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Profile } from '../../../store/profile/model/profile.interface';
-import { DatePipe, formatDate } from '@angular/common';
+import {DatePipe, formatDate, NgIf} from '@angular/common';
 import { updateProfile } from '../../../store/profile/profile.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/store';
@@ -33,6 +33,7 @@ import { AppState } from '../../../store/store';
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    NgIf,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './profile-form.component.html',

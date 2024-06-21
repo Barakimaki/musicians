@@ -1,16 +1,34 @@
+<!--<div class="artists">-->
+<!--  <button mat-button color="primary" type="submit" (click)="editProfileMode()">-->
+<!--    Создать профиль исполнителя-->
+<!--  </button>-->
+<!--  <div>-->
+<!--    @if(isEdit){-->
+<!--    <app-artist-form (onClose)="closeEditArtistMode()"></app-artist-form>-->
+<!--    }-->
+<!--  </div>-->
+<!--  <div class=" artist-list">-->
+<!--    @for(artist of (artists$ | async); track artist.id){-->
+<!--    <app-artist-short [artist]="artist"></app-artist-short>-->
+<!--    }-->
+<!--  </div>-->
+<!--</div>-->
+
+
 <div class="artists">
-  <button mat-button color="primary" type="submit" (click)="editProfileMode()">
+  <button mat-button color="primary" type="submit" (click)="editProfileMode()" class="create-btn">
     Создать профиль исполнителя
   </button>
-  <div>
-    @if(isEdit){
-    <app-artist-form (onClose)="closeEditArtistMode()"></app-artist-form>
-    }
-  </div>
-  <div class=" artist-list">
-    @for(artist of (artists$ | async); track artist.id){
-    <app-artist-short [artist]="artist"></app-artist-short>
-    }
-  </div>
 
+  @if(isEdit) {
+    <div class="form-wrapper">
+      <app-artist-form (onClose)="closeEditArtistMode()"></app-artist-form>
+    </div>
+  }
+
+  <div class="artist-list">
+    @for(artist of (artists$ | async); track artist.id) {
+      <app-artist-short [artist]="artist"></app-artist-short>
+    }
+  </div>
 </div>

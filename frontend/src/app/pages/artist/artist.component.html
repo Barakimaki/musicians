@@ -1,8 +1,18 @@
+<!--<div class="artist-profile">-->
+<!--  @if((userId$ | async) === (artist$ | async)?.user?.id){-->
+<!--  <button mat-button color="primary" type="submit" (click)="onDelete()">-->
+<!--    Удалить профиль-->
+<!--  </button>-->
+<!--  }-->
+<!--  <app-artist-info [artist]="(artist$ | async) || {}"></app-artist-info>-->
+<!--</div>-->
+
 <div class="artist-profile">
-  @if((userId$ | async) === (artist$ | async)?.user?.id){
-  <button mat-button color="primary" type="submit" (click)="onDelete()">
-    Удалить профиль
-  </button>
+  @if ((userId$ | async) === (artist$ | async)?.user?.id) {
+    <button mat-button color="warn" type="submit" (click)="onDelete()" class="delete-btn">
+      Удалить профиль
+    </button>
   }
+
   <app-artist-info [artist]="(artist$ | async) || {}"></app-artist-info>
 </div>
