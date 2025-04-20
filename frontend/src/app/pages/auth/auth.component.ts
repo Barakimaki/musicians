@@ -1,21 +1,28 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {
   FormControl,
-  FormGroup,
-  ReactiveFormsModule,
+  FormGroup, ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { signin, signup } from '../../store/auth/auth.actions';
-import { AppState } from '../../store/store';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {signin, signup} from '../../store/auth/auth.actions';
+import {AppState} from '../../store/store';
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatButton} from "@angular/material/button";
+import {MatCard} from "@angular/material/card";
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [ReactiveFormsModule, MatCardModule, MatButtonModule],
+  imports: [
+    MatFormField,
+    ReactiveFormsModule,
+    MatInput,
+    MatButton,
+    MatCard
+  ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
@@ -45,7 +52,8 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+  }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -56,9 +64,9 @@ export class AuthComponent implements OnInit {
     const username = this.authForm.value.username;
     const password = this.authForm.value.password;
     if (this.isLoginMode) {
-      this.store.dispatch(signin({ email, password }));
+      this.store.dispatch(signin({email, password}));
     } else {
-      this.store.dispatch(signup({ email, username, password }));
+      this.store.dispatch(signup({email, username, password}));
     }
   }
 }

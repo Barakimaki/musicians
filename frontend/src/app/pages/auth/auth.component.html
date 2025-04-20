@@ -1,33 +1,65 @@
-<div class="auth">
-  <mat-card>
-    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">
-      <mat-card-header>
-        <mat-card-title>{{ isLoginMode ? "Вход" : "Регистрация" }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" formControlName="email" />
-        </div>
-        @if(!isLoginMode){
-        <div class="form-group">
-          <label for="username">Имя пользователя</label>
-          <input type="text" id="username" formControlName="username" />
-        </div>
+<mat-card class="auth-card">
+  <h2 class="auth-title">{{ isLoginMode ? 'Вход' : 'Регистрация' }}</h2>
+
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">
+    <!-- Email -->
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required/>
+      @if (authForm.get('email')?.hasError('required')) {
+        <mat-error>Email обязателен</mat-error>
+      }
+      @if (authForm.get('email')?.hasError('email')) {
+        <mat-error>Введите корректный email</mat-error>
+      }
+    </mat-form-field>
+
+    @if (!isLoginMode) {
+      <!-- Username (только для регистрации) -->
+      <mat-form-field appearance="outline">
+        <mat-label>Имя пользователя</mat-label>
+        <input matInput formControlName="username" required/>
+        @if (authForm.get('username')?.hasError('required')) {
+          <mat-error>Имя пользователя обязательно</mat-error>
         }
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" formControlName="password" />
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button color="primary" type="submit" [disabled]="authForm.invalid">
-          {{isLoginMode ? 'Войти' : 'Зарегистрироваться'}}
-        </button>
-        <button mat-button type="button" (click)="onSwitchMode()">
-          {{isLoginMode ? 'Регистрация' : 'Вход'}}
-        </button>
-      </mat-card-actions>
-    </form>
-  </mat-card>
-</div>
+        @if (authForm.get('username')?.hasError('minlength')) {
+          <mat-error>Минимум 4 символа</mat-error>
+        }
+        @if (authForm.get('username')?.hasError('maxlength')) {
+          <mat-error>Максимум 40 символов</mat-error>
+        }
+      </mat-form-field>
+    }
+
+    <!-- Password -->
+    <mat-form-field appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input matInput formControlName="password" type="password" required/>
+      @if (authForm.get('password')?.hasError('required')) {
+        <mat-error>Пароль обязателен</mat-error>
+      }
+      @if (authForm.get('password')?.hasError('minlength')) {
+        <mat-error>Минимум 6 символов</mat-error>
+      }
+      @if (authForm.get('password')?.hasError('maxlength')) {
+        <mat-error>Максимум 40 символов</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="authForm.invalid || isLoading">
+      {{ isLoginMode ? 'Войти' : 'Зарегистрироваться' }}
+    </button>
+
+    <!-- Error Message -->
+    @if (error) {
+      <div class="auth-error">{{ error }}</div>
+    }
+  </form>
+
+  <!-- Switch Mode -->
+  <div class="auth-switch">
+    <span>{{ isLoginMode ? 'Нет аккаунта?' : 'Уже есть аккаунт?' }}</span>
+    <a (click)="onSwitchMode()">{{ isLoginMode ? 'Зарегистрироваться' : 'Войти' }}</a>
+  </div>
+</mat-card>
